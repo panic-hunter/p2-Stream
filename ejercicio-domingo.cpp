@@ -1,62 +1,40 @@
 #include<iostream>
 #include<fstream>
-#include<vector>
 using namespace std;
 
-/*
- * Bolsa de codigos:
- * 
- * ifstream // para declarar ficheros de entrada (in)
- * ofstream // para declarar ficheros de salida (out)
- *  ejemplo:
- *      ofstream f;
- * 
- * Para relacionar el fichero logico con el fichero fisico necesesitamos realizar
- * una operacion de apaertura del fichero. En c++ se usa la instrucción open:
- *  nombre_fichero_logico.open (nombre_fichero_fisico);
- *  ejempolo:
- *      f.open("datos.txt"); // a partir de aqui podemos usar el fichero
- * -------------------------------------------------------------------------------------------   
- *      Apertura de fichero:
- * -------------------------------------------------------------------------------------------
- *  f.open("datos.txt", ios::app);
- *  -Para saber si da error se aplica "!" al fichero.
- *      
- * 
- * -------------------------------------------------------------------------------------------   
- * * * * * * Operaciones de fichero:
- * -------------------------------------------------------------------------------------------
- *  -Para escribir el numero 10 en el fichero f:
- *      f<<10;
- *  -Para escribir un string:
- *      f<<"Hola";   
- * -------------------------------------------------------------------------------------------   
- * * * * * * Cierre del fichero:
- * -------------------------------------------------------------------------------------------
- * >>>>>>>>>>>SIEMPRE HAY QUE CERRAR EL FICHERO<<<<<<<<<<<<<
- *  -Para cerrar el fichero se utiliza la instruccion close:
- *      nombre_fichero_logico.close();
- * 
- *  Ejemplo:
- *      f.close();
- * 
- */
+// declaracion variables                                        
+void borrarTerm();                                              
+void ingresar_Datos();                      
 
 int main()
 {
-    int a,b,c,d,e; 
-    string f,g;
-    ifstream bag;
-    bag.open("datoshunter.txt");
-    if (!bag.is_open())
+    // creamos fichero virtual
+    ifstream inFile;
+    inFile.open("list.txt");
+    // comprobacion de errores
+    if (inFile.fail())
     {
-        cout<<"Error al encontrar archivo"<<endl;
+        cerr<<"Error abriendo el archivo."<<endl;
+        exit(1);
     }
-    bag >>a>>b>>c>>d>>e>>f>>g; bag.close();
-    cout<<a<<b<<c<<d<<e<<f<<g; return 0;
-
-    
+    // ingresamos datos [fichero]
+    ingresar_Datos();
+    // mostramos datos [terminal]
 }
-    
+void borrarTerm()
+{system("cls");}
+void ingresar_Datos()
+{
+    int datos[]={1,3,5,7,9}; // 0,1,2,3,4
+    ofstream outFile;
+    outFile.open("list.txt");
+    outFile<<datos[0]; outFile<<datos[1]; outFile<<datos[2]; outFile<<datos[3]; outFile<<datos[4];
+    outFile.close(); // siempre hay que cerrar los ficheros "out"
 
- 
+    //terminal
+    cout<<datos[0]<<endl;
+    cout<<datos[1]<<endl;
+    cout<<datos[2]<<endl;
+    cout<<datos[3]<<endl;
+    cout<<datos[4]<<endl;
+}
