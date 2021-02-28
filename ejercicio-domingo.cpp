@@ -1,7 +1,8 @@
-// librerias 
-#include<fstream>
 #include<iostream>
+#include<fstream>
+#include<vector>
 using namespace std;
+
 /*
  * Bolsa de codigos:
  * 
@@ -41,18 +42,21 @@ using namespace std;
  * 
  */
 
-
-    // TODO: Start
-    int main()
+int main()
+{
+    int a,b,c,d,e; 
+    string f,g;
+    ifstream bag;
+    bag.open("datoshunter.txt");
+    if (!bag.is_open())
     {
-        ofstream hunter; // fichero logico "hunter"
-        hunter.open("datoshunter.txt"); 
-        hunter.open("datoshunter.txt", ios::app); // a partir de aqui podemos usar el fichero
-        if(!hunter)
-          cout << "Error abriendo el fichero"<< endl;
-        hunter<<1,3,5,7;
-
+        cout<<"Error al encontrar archivo"<<endl;
     }
+    bag >>a>>b>>c>>d>>e>>f>>g; bag.close();
+    cout<<a<<b<<c<<d<<e<<f<<g; return 0;
+
+    
+}
     
 
  
